@@ -68,21 +68,45 @@ I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I
 - Color Schema
     - Blue Aritifical Grass color of padel courts called Mondo - #005387
     - Head Pro S Padel ball - #e2f754
-- ### 2.3 Structure
+- ### 2.3 Structure of Data
 - I used [smartdraw](https://www.smartdraw.com/) for creating the structure of the models. I have included screenshots of it below:
 
 ## 3. Features
 - Navigation Bar
-    - 
+    - Navigation bar has different links dependant on wether the user is logged in or not
+        -  Home, Sign up/Log in if you are logged out
+        - Home, Log out if you are logged in
+- Blog section
+    - This section lists blog posts by the latest created_on date, also displaying likes/dislikes and number of comments
+    - It lists them as cards and when you click on the header of the cards it will open that blog post in full width page and where you can commment on the post/like or dislike the court
+    - They are paginated by 9 posts per page, three cards per row.
+- Footer
+    - This section displays copyright information and links to social media accounts.
+- Admin section
+    - This is only for the site admin but it will be the standard django admin page where the admin can approve posts and comments.
 
 
 ## 4. Future features
+- Navigation Bar
+    - I'd like to add more links on the site, like a site to donate, and an About section.
+    - I'd also like to add the searchbar in the navigation bar as it is a good modern way to structure you site.
+- Blog section
+    - I'd like to incorporate Google Maps API for allowing user to start typing the adress and then getting suggestions by Google Maps.
+    - Each blog post would also have a small window of the map locating the court with an arrow.
+- Footer
+    - The footer will have a FAQ link added in the future.
 
 ## 5. Wireframes
 
 === Post planning ===
 
 ## 6. Technology
+- HTML/CSS
+- JavaScript
+- Python/Django
+- Heroku
+- PostgreSQL
+- Cloudinary
 
 ## 7. Testing
 - ### 7.1 code validation
