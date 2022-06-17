@@ -1,108 +1,101 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# PadelCourtR
+![Logo for the website]()
 
-Welcome USER_NAME,
+## Table of Contents
+<hr>
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+### 1. [ Purpose of the project](#1-purpose-of-the-project)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+### 2. [ UX](#2-ux)
 
-## Gitpod Reminders
+- ### 2.1[ User Stories](#21-user-stories-1)
+- ### 2.2[ Typography and color schema](#22-typography-and-color-schema-1)
+- ### 2.3[ Structure](#23-structure-1)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+### 3. [ Features](#3-features)
 
-`python3 -m http.server`
+### 4. [ Future features](#4-future-features)
 
-A blue button should appear to click: _Make Public_,
+### 5. [ Wireframes](#5-wireframes)
 
-Another blue button should appear to click: _Open Browser_.
+### 6. [ Technology](#6-technology)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### 7. [ Testing](#7-testing)
+- ### 7.1[ code validation](#71-code-validation-1)
+- ### 7.2[ test cases (user story based with screenshots)](#72-test-cases-user-story-based-with-screenshots-1)
+- ### 7.3[ fixed bugs](#73-fixed-bugs-1)
+- ### 7.4[ supported screens and browsers](#74-supported-screens-and-browsers-1)
 
-A blue button should appear to click: _Make Public_,
+### 8. [ Deployment](#8-deployment)
+- ### 8.1[ via Heroku](#81-via-heroku-1)
+- ### 8.2[ via GitHub](#82-via-github-1)
+- ### 8.3[ via GitPod](#83-via-gitpod-1)
 
-Another blue button should appear to click: _Open Browser_.
+### 9. [ Credits](#9-credits)
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## 1. Purpose of the project
+I wanted to create a website for something that I love. A sport called Padel. It is one of the fastest growing sports in Sweden and there are opening about 50 to 100 new courts around the country each year. So this website aims to allow users to add padel courts with ratings to either inspire, inform or possibly even warn other users. The community can then search for courts and leave comments wether they agree with the author or not as well as write other helpful information that the author might have missed. Users will then also be able to upvote/downvote the courts.
 
-To log into the Heroku toolbelt CLI:
+## 2. UX
+- ### 2.1 User stories
+    - Site Admin
+        - As a **Site Admin** I can **approve comments** so that **I can moderate the content in the comments section**
+        - As a **Site Admin** I can **delete posts and comments** so that **I can remove potentially fraudulent or harmful content**
+        - As a **Site Admin** I can **create a draft post** so that **I can finish writing later**
+    - Site User    
+        - As a **Site User** I can **view blog posts as a list** so that **I can select one to read**
+        - As a **Site User** I can **open specific blog posts** so that **I can read the whole post**
+        - As a **Site User** I can **comment on a post** so that **I can engage in the conversation**
+        - As a **Site User** I can **like or unlike a post** so that **I can interact with the content**
+        - As a **Site User** I can **dislike or undislike a post** so that **I can interact with the content**
+        - As a **Site User** I can **register an account** so that **I can log in and comment/like posts**
+        - As a **Site User** I can **search for content based on name or location** so that **I can easily find what I'm looking for**
+        - As a **Site User** I can **see all posts I've made** so that **I can easily modify or remove posts if needed**
+        - As a **Site User** I can **delete my posts** so that **wrong, old or irrelevant information doesn't stay visible**
+        - As a **Site User** I can **rate the courts by my experience** so that **other users can be inspired or informed**
+- ### 2.2 Typography and color schema
+I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I decided on two colors to incorporate on my site based on the color on the grass on the best artificial grass for a padel court, called Mondo as well as the color of the padel ball Head Pro S. The details are here beneath. 
+- Typography
+    - Logo - Anton, Regular, weight: 400
+    - The rest - Roboto Condensed, Regular, weight: 300, 400, 700
+    - HTML Code:
+        - ``` <link rel="preconnect" href="https://fonts.googleapis.com"> ```
+        - ``` <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> ```
+        - ``` <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet"> ```
+    - CSS Code:
+        - ``` font-family: 'Anton', sans-serif; ```
+        - ``` font-family: 'Roboto Condensed', sans-serif; ```
+- Color Schema
+    - Blue Aritifical Grass color of padel courts called Mondo - #005387
+    - Head Pro S Padel ball - #e2f754
+- ### 2.3 Structure
+- I used [smartdraw](https://www.smartdraw.com/) for creating the structure of the models. I have included screenshots of it below:
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+## 3. Features
+- Navigation Bar
+    - 
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
 
-------
+## 4. Future features
 
-## Release History
+## 5. Wireframes
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+=== Post planning ===
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+## 6. Technology
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+## 7. Testing
+- ### 7.1 code validation
+- ### 7.2 test cases (user story based with screenshots)
+- ### 7.3 fixed bugs
+- ### 7.4 supported screens and browsers
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+## 8. Deployment
+- ### 8.1 via Heroku
+- ### 8.2 via Github
+- ### 8.3 via Gitpod
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+## 9. Credits
+ - Default image - [Tomasz Krawczyk](https://unsplash.com/photos/M2x3A8Q4JbY?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
+ - Color schema thanks to [Colormind](http://colormind.io/bootstrap/)
+ - ERDiagram via [smartdraw](https://www.smartdraw.com/)
