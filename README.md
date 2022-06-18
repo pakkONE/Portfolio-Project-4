@@ -112,6 +112,9 @@ I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I
 - ### 7.1 code validation
 - ### 7.2 test cases (user story based with screenshots)
 - ### 7.3 fixed bugs
+    - I encountered a bug saying ``` NoReverseMatch at /admin/blog/post/add/ ```<br>
+    ``` Reverse for 'django_summernote-upload_attachment' not found. 'django_summernote-upload_attachment' is not a valid view function or pattern name. ```
+      - I solved this by adding ``` path('summernote/', include('django_summernote.urls')), ``` to padelcourtr/urls.py instead of blog/urls.py
 - ### 7.4 supported screens and browsers
 
 ## 8. Deployment
