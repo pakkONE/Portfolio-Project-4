@@ -1,7 +1,7 @@
 body {
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 400;
-  color: white;
+  color: black;
 }
 
 .navbar-brand {
@@ -13,4 +13,13 @@ body {
 
 .navbar-nav {
   justify-content: flex-end;
+}
+
+.masthead {
+  min-height: 40vh;
+  background-position: center;
+}
+
+.post-heading {
+  margin-top: 10rem;
 }

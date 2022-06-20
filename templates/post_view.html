@@ -1,0 +1,114 @@
+{% extends 'base.html' %} {% block content %}
+{% load crispy_forms_tags %}
+
+{% if "placeholder" in post.court_image.url %}
+<header class="masthead"
+    style="background-image: url('https://images.unsplash.com/photo-1613870930431-a09c7139eb33?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80')">
+    {% else %}
+    <img src=" {{ post.court_image.url }}" width="100%">
+    {% endif %}
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading bg-light">
+                    <h1>{{ post.title }}</h1>
+                    <h2 class="subheading">{{ post.author }} | {{ post.created_on }}</h2>
+                    <span class="meta">
+                        Posted by {{ post.author }} on {{ post.created_on }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Information: </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Court: {{ post.court }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Address: {{ post.location }}</h6>
+                        {% if post.website %}
+                        <h6 class="card-subtitle mb-2 text-muted"> Website: {{ post.website }}</h6>
+                        {% endif %}
+                        <h6 class="card-subtitle mb-2 text-muted">Rating: {{ post.rating }} out of 5</h6>
+                        <h6 class="card-subtitle mb-2 text-muted"></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row gx-4 gx-lg-5 justify-content-left">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p class="card-text">
+                            {{ post.content | safe }}
+                        </p>
+                        <div class="row">
+                            <div class="col-2">
+                                <strong class="text-secondary"><i class="far fa-thumbs-up"></i>
+                                    {{ post.number_of_likes }}
+                                </strong>
+                                <strong class="text-secondary"><i class="far fa-thumbs-down"></i>
+                                    {{ post.number_of_dislikes }}
+                                </strong>
+                            </div>
+                            <div class="col-1">
+                                {% with comments.count as total_comments %}
+                                <strong class="text-secondary"><i class="far fa-comments"></i>
+                                    {{ total_comments }}</strong>
+                                {% endwith %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <h3>Comments:</h3>
+            <div class="card-body">
+                {% for comment in comments %}
+                <div class="comments" style="padding: 10px;">
+                    <p class="font-weight-bold">
+                        {{ comment.name }}
+                        <span class=" text-muted font-weight-normal">
+                            {{ comment.created_on }}
+                        </span> wrote:
+                    </p>
+                    {{ comment.body | linebreaks }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4 card mb-4  mt-3 ">
+            <div class="card-body">
+                {% if commented %}
+                <div class="alert alert-success" role="alert">
+                    Your comment had been submitted and is awaiting approval
+                </div>
+                {% else %}
+                {% if user.is_authenticated %}
+
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</article>
+
+{% endblock content %}
