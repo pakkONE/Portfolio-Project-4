@@ -30,7 +30,6 @@ class Post(models.Model):
     likes = models.ManyToManyField(User, related_name='post_likes', blank=True)
     dislikes = models.ManyToManyField(User, related_name='post_dislikes', blank=True)
 
-
     class Meta:
         ordering = ['-created_on']
 
@@ -51,7 +50,6 @@ class Comment(models.Model):
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
-
 
     class Meta:
         ordering = ['created_on']

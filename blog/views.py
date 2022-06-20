@@ -31,6 +31,6 @@ class PostView(View):
                 "comments": comments,
                 "commented": False,
                 "liked": liked,
-                "disliked": liked
+                "disliked": disliked
             },
         )

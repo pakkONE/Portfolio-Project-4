@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card border-0 shadow rounded-3 my-5">
+        <div class="card-body p-4 p-sm-5 text-center">
+          <p>{% blocktrans %}Welcome to PadelCourtR - if you would like to comment and like/dislike posts, please log
+            in. If you
+            have not created and account yet, then you can
+            <a href="{{ signup_url }}">sign up</a> here.{% endblocktrans %}</p>
+          <h3 class="card-title text-center mt-2 mb-3 fw-light fs-5">{% trans "Sign In" %}</h3>
+          <form class="login form-floating mb-3" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            
+            <div class="d-grid">
+              <button class="btn btn-primary text-uppercase fw-bold primaryAction"
+                type="submit">{% trans "Sign In" %}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
