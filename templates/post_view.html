@@ -8,11 +8,10 @@
     <img src=" {{ post.court_image.url }}" width="100%">
     {% endif %}
     <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="row g-0">
+            <div class="col-md-6">
                 <div class="post-heading bg-light">
                     <h1>{{ post.title }}</h1>
-                    <h2 class="subheading">{{ post.author }} | {{ post.created_on }}</h2>
                     <span class="meta">
                         Posted by {{ post.author }} on {{ post.created_on }}
                     </span>
@@ -23,10 +22,10 @@
 </header>
 <!-- Post Content-->
 <article class="mb-4">
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
+    <div class="col">
+        <div class="row g-0">
+            <div class="col-md-4 my-5">
+                <div class="card col-md-6">
                     <div class="card-body">
                         <h5 class="card-title">Information: </h5>
                         <h6 class="card-subtitle mb-2 text-muted">Court: {{ post.court }}</h6>
@@ -39,25 +38,62 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="row gx-4 gx-lg-5 justify-content-left">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="col-md-8 my-5">
+                <div class="row g-0">
+                    <div class="col-md-6">
                         <p class="card-text">
                             {{ post.content | safe }}
                         </p>
                         <div class="row">
                             <div class="col-2">
-                                <strong class="text-secondary"><i class="far fa-thumbs-up"></i>
-                                    {{ post.number_of_likes }}
-                                </strong>
-                                <strong class="text-secondary"><i class="far fa-thumbs-down"></i>
-                                    {{ post.number_of_dislikes }}
-                                </strong>
+                                {% if user.is_authenticated %}
+                                <form action="{% url 'post_likes' post.slug %}" method="POST" class="d-inline">
+                                    {% csrf_token %}
+                                    {% if liked %}
+
+                                    <button type="submit" name="bloglike_id" value="{{ post.slug }}" class="btn-like"><i
+                                            class="fa-solid fa-thumbs-up"></i></button>
+
+                                    {% else %}
+
+                                    <button type="submit" name="bloglike_id" value="{{ post.slug }}" class="btn-like"><i
+                                            class="fa-regular fa-thumbs-up"></i></button>
+
+                                    {% endif %}
+
+                                </form>
+                                {% else %}
+
+                                <span class="text-secondary"><i class="fa-light fa-thumbs-up"></i></span>
+
+                                {% endif %}
+                                <span class="text-secondary">{{ post.number_of_likes }}</span>
+                                {% if user.is_authenticated %}
+                                <form action="{% url 'post_dislikes' post.slug %}" method="POST" class="d-inline">
+                                    {% csrf_token %}
+                                    {% if disliked %}
+
+                                    <button type="submit" name="blogdislike_id" value="{{ post.slug }}"
+                                        class="btn-dislike"><i class="fa-solid fa-thumbs-down"></i></button>
+
+                                    {% else %}
+
+                                    <button type="submit" name="blogdislike_id" value="{{ post.slug }}"
+                                        class="btn-dislike"><i class="fa-regular fa-thumbs-down"></i></button>
+
+                                    {% endif %}
+
+                                </form>
+                                {% else %}
+
+                                <span class="text-secondary"><i class="fa-light fa-thumbs-down"></i></span>
+                                {% endif %}
+                                <span class="text-secondary">{{ post.number_of_dislikes }}</span>
                             </div>
                             <div class="col-1">
                                 {% with comments.count as total_comments %}
-                                <strong class="text-secondary"><i class="far fa-comments"></i>
-                                    {{ total_comments }}</strong>
+                                <span class="text-secondary"><i class="far fa-comments"></i>
+                                    {{ total_comments }}</span>
                                 {% endwith %}
                             </div>
                         </div>
@@ -66,20 +102,15 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <hr>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
+    <div class="row g-0">
+        <div class="col-md-8 card my-3">
             <h3>Comments:</h3>
             <div class="card-body">
                 {% for comment in comments %}
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
                         {{ comment.name }}
-                        <span class=" text-muted font-weight-normal">
+                        <span class="text-muted font-weight-normal">
                             {{ comment.created_on }}
                         </span> wrote:
                     </p>
@@ -88,7 +119,7 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="col-md-4 card mb-4 mt-3">
+        <div class="col-md-4 card my-3">
             <div class="card-body">
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
@@ -99,10 +130,10 @@
 
                 <h3>Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
-                <form method="POST" style="margin-top: 1.3em;">
+                <form method="POST" style="">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                    <button type="submit" style="margin-top: 1rem;" class="btn btn-success btn-lg">Submit</button>
                 </form>
                 {% endif %}
                 {% endif %}

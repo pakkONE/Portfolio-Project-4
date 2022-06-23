@@ -28,6 +28,7 @@
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
+    {% load crispy_forms_tags %}
 
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -58,6 +59,11 @@
                     {% endif %}
                 </ul>
             </div>
+            <form class="form-inline" action="{% url 'search_results' %}" method="get">
+                <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search court name..."
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
     </nav>
 
@@ -66,7 +72,7 @@
         {% endblock content %}
     </main>
 
-    <div class="container fixed-bottom">
+    <div class="container mb-0">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <div class="col-md-4 d-flex align-items-center">
                 <span class="text-muted">&#169; Made by Johan 2022</span>

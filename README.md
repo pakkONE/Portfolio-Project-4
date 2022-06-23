@@ -115,6 +115,7 @@ I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I
     - I encountered a bug saying ``` NoReverseMatch at /admin/blog/post/add/ ```<br>
     ``` Reverse for 'django_summernote-upload_attachment' not found. 'django_summernote-upload_attachment' is not a valid view function or pattern name. ```
       - I solved this by adding ``` path('summernote/', include('django_summernote.urls')), ``` to padelcourtr/urls.py instead of blog/urls.py
+    - When I am trying to dislike a post and clicking the thumbs down icon, it adds a number to the liked count.
 - ### 7.4 supported screens and browsers
 
 ## 8. Deployment

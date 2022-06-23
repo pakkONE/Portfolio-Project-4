@@ -23,3 +23,9 @@ body {
 .post-heading {
   margin-top: 10rem;
 }
+
+.btn-like,
+.btn-dislike {
+  border: none;
+  background: transparent;
+}
