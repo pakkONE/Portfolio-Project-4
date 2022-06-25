@@ -6,29 +6,29 @@
     <div class="row">
         <div class="col-12 mt-5 left">
             <div class="row">
-                {% for court in object_list %}
+                {% for object in object_list %}
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
-                                {% if "placeholder" in post.court_image.url %}
+                                {% if "placeholder" in object.court_image.url %}
                                 <img src="https://images.unsplash.com/photo-1613870930431-a09c7139eb33?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"
                                     alt="" class="card-img-top">
                                 {% else %}
-                                <img src="{{ post.court_image.url }}" alt="" class="card-img-top">
+                                <img src="{{ object.court_image.url }}" alt="" class="card-img-top">
                                 {% endif %}
                                 <div class="image-flash">
-                                    <p class="author">Post by: {{ post.author }}</p>
+                                    <p class="author">Post by: {{ object.author }}</p>
                                 </div>
                             </div>
-                            <a href="{% url 'post_view' post.slug %}" class="post-link">
-                                <h2 class="card-title">{{ post.title }}</h2>
-                                <p class="card-text">{{ post.fragment }}</p>
+                            <a href="{% url 'post_view' object.slug %}" class="post-link">
+                                <h2 class="card-title">{{ object.title }}</h2>
+                                <p class="card-text">{{ object.fragment }}</p>
                             </a>
                             <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on }} <i
-                                    class="fa-solid fa-thumbs-up"></i>{{ post.number_of_likes }} <i
-                                    class="fa-solid fa-thumbs-down"></i> {{ post.number_of_dislikes }}</p>
+                            <p class="card-text text-muted h6">{{ object.created_on }} <i
+                                    class="fa-solid fa-thumbs-up"></i>{{ object.number_of_likes }} <i
+                                    class="fa-solid fa-thumbs-down"></i> {{ object.number_of_dislikes }}</p>
                         </div>
                     </div>
                 </div>

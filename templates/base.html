@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +48,10 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'account_logout' %}">Log Out</a>
+                        <a class="nav-link text-white" href="{% url 'add_post' %}">Add post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'add_post' %}">My Activity</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
@@ -56,10 +60,14 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{% url 'account_login' %}">Log In</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'account_logout' %}">Log Out</a>
+                    </li>
                     {% endif %}
                 </ul>
             </div>
             <form class="form-inline" action="{% url 'search_results' %}" method="get">
+                {% csrf_token %}
                 <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search court name..."
                     aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

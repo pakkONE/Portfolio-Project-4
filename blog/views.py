@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.db.models import Q
+from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse_lazy
 from .models import Post
 from .forms import CommentForm, AddPostForm
 
@@ -84,7 +86,6 @@ class PostLike(View):
         else:
             post.likes.add(request.user)
         
-
         return HttpResponseRedirect(reverse('post_view', args=[slug]))
 
 
@@ -110,3 +111,28 @@ class SearchResults(generic.ListView):
         object_list = Post.objects.filter(Q(court__icontains=query))
         return object_list
 
+
+def add_post(request):
+
+    form = AddPostForm()
+    if request.method == 'POST':
+        form = AddPostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+            
+    return render(request, 'add_post.html', context={'form': form})
+
+
+class UpdatePost(UpdateView):
+    model = Post
+    form_class = AddPostForm
+    template_name_suffix = '_update_form'
+    template_name = 'post_update_form.html'
+    success_url = '/'
+
+
+class DeletePost(DeleteView):
+    model = Post
+    template_name = 'confirm_delete_post.html'
+    success_url = reverse_lazy('home')

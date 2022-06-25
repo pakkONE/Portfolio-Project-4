@@ -11,6 +11,11 @@ class PostAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on', 'updated_on')
     summernote_fields = ('content')
+    actions = ['approve_posts']
+
+    @admin.action(description='Mark selected stories as published')
+    def approve_posts(self, request, queryset):
+        queryset.update(status='1')
 
 
 @admin.register(Comment)
@@ -21,6 +26,7 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'body')
     actions = ['approve_comments']
 
+    @admin.action(description='Approve the selected comments')
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
 

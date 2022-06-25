@@ -38,21 +38,19 @@ I wanted to create a website for something that I love. A sport called Padel. It
 
 ## 2. UX
 - ### 2.1 User stories
-    - Site Admin
-        - As a **Site Admin** I can **approve comments** so that **I can moderate the content in the comments section**
-        - As a **Site Admin** I can **delete posts and comments** so that **I can remove potentially fraudulent or harmful content**
-        - As a **Site Admin** I can **create a draft post** so that **I can finish writing later**
-    - Site User    
-        - As a **Site User** I can **view blog posts as a list** so that **I can select one to read**
-        - As a **Site User** I can **open specific blog posts** so that **I can read the whole post**
-        - As a **Site User** I can **comment on a post** so that **I can engage in the conversation**
-        - As a **Site User** I can **like or unlike a post** so that **I can interact with the content**
-        - As a **Site User** I can **dislike or undislike a post** so that **I can interact with the content**
-        - As a **Site User** I can **register an account** so that **I can log in and comment/like posts**
-        - As a **Site User** I can **search for content based on name or location** so that **I can easily find what I'm looking for**
-        - As a **Site User** I can **see all posts I've made** so that **I can easily modify or remove posts if needed**
-        - As a **Site User** I can **delete my posts** so that **wrong, old or irrelevant information doesn't stay visible**
-        - As a **Site User** I can **rate the courts by my experience** so that **other users can be inspired or informed**
+    - Anonymous User
+        - As an **Anonymous User** I can **view blog posts as a list** so that **I can select one to read**
+        - As an **Anonymous User** I can **search posts by court name** so that **find posts about courts I'm interested in**
+        - As an **Anonymous User** I can **read comments and view likes/dislikes** so that **I can be informed by the content**
+        - As an **Anonymous User** I can **open specific blog posts** so that **I can read the whole post**
+    - Registered User    
+        - As a **Registered User** I can **comment on a post** so that **I can engage in the conversation**
+        - As a **Registered User** I can **like or unlike a post** so that **I can interact with the content**
+        - As a **Registered User** I can **dislike or undislike a post** so that **I can interact with the content**
+        - As a **Registered User** I can **register an account** so that **I can log in and comment/like posts**
+        - As a **Registered User** I can **see all posts and comments I've made** so that **I can easily modify or remove them if needed**
+        - As a **Registered User** I can **delete my posts** so that **wrong, old or irrelevant information doesn't stay visible**
+        - As a **Registered User** I can **rate the courts by my experience** so that **other users can be inspired or informed**
 - ### 2.2 Typography and color schema
 I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I decided on two colors to incorporate on my site based on the color on the grass on the best artificial grass for a padel court, called Mondo as well as the color of the padel ball Head Pro S. The details are here beneath. 
 - Typography
@@ -75,7 +73,7 @@ I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I
 - Navigation Bar
     - Navigation bar has different links dependant on wether the user is logged in or not
         -  Home, Sign up/Log in if you are logged out
-        - Home, Log out if you are logged in
+        - Home, Add Post, My Activity, Log out if you are logged in
 - Blog section
     - This section lists blog posts by the latest created_on date, also displaying likes/dislikes and number of comments
     - It lists them as cards and when you click on the header of the cards it will open that blog post in full width page and where you can commment on the post/like or dislike the court

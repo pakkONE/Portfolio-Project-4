@@ -3,15 +3,15 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
 <div class="container">
+  {% if request.user == post.author %}
   <div class="row">
     <div class="col-md-8 my-4">
-      <form action="{% url 'add_post' %}" method="POST" enctype="multipart/form-data">
+      <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
   </div>
