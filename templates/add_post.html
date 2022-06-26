@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load cloudinary %}
 
 {% block content %}
 
@@ -10,9 +11,9 @@
       <form action="{% url 'add_post' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
   </div>
 </div>

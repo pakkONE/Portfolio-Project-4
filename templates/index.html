@@ -8,7 +8,7 @@
             <div class="row">
                 {% for post in post_list %}
                 <div class="col-md-4">
-                    <div class="card mb-4">
+                    <div class="card mb-4 h-100">
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in post.court_image.url %}
@@ -26,7 +26,7 @@
                                 <p class="card-text">{{ post.fragment }}</p>
                             </a>
                             <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on }} <i
+                            <p class="card-text text-muted h6 mb-0">{{ post.created_on }} <i
                                     class="fa-solid fa-thumbs-up"></i>{{ post.number_of_likes }} <i
                                     class="fa-solid fa-thumbs-down"></i> {{ post.number_of_dislikes }}</p>
                         </div>

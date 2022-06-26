@@ -1,5 +1,4 @@
 {% load static %}
-{% load crispy_forms_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,27 +30,28 @@
 <body class="d-flex flex-column h-100 main-bg">
     {% load crispy_forms_tags %}
 
-    <!-- Navigation-->
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <ul class="nav">
-                <a class="navbar-brand" href="{% url 'home' %}">PadelCourtR</a>
-            </ul>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mb-2 mb-lg-0">
+            <a class="navbar-brand" href="{% url 'home' %}">PadelCourtR</a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link text-white" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{% url 'add_post' %}">Add post</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'add_post' %}">My Activity</a>
+                        <a class="nav-link text-white" href="{% url 'my_activity' %}">My Activity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'account_logout' %}">Log Out</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
@@ -60,26 +60,24 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{% url 'account_login' %}">Log In</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'account_logout' %}">Log Out</a>
-                    </li>
                     {% endif %}
                 </ul>
+                <form class="d-flex" action="{% url 'search_results' %}" method="GET">
+                    {% csrf_token %}
+                    <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search court name..."
+                        aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
-            <form class="form-inline" action="{% url 'search_results' %}" method="get">
-                {% csrf_token %}
-                <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search court name..."
-                    aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
     </nav>
 
+    <!-- Template content -->
     <main class="flex-shrink-0 main-bg">
         {% block content %}
         {% endblock content %}
     </main>
-
+    <!-- Footer -->
     <div class="container mb-0">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <div class="col-md-4 d-flex align-items-center">

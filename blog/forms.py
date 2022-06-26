@@ -13,6 +13,7 @@ class AddPostForm(forms.ModelForm):
         model = Post
         fields = [
             'title',
+            'slug',
             'author',
             'court',
             'location',
@@ -22,4 +23,3 @@ class AddPostForm(forms.ModelForm):
             'court_image',
             'fragment'
             ]
-        

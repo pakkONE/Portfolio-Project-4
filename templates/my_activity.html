@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        {% if user.is_authenticated %}
+        <div class="col-md-8 offset-md-2">
+            <p>See your activity here:</p>
+        </div>
+        <br />
+        <div class="col-md-8 offset-md-2 vstack gap-3">
+            {% for post in object_list %}
+            <div class="bg-light border">{{ post.title }}</div>
+            <p><a href="{% url 'edit_post' post.slug %}"><button class="btn btn-success"><i
+                            class="fa fa-edit"></i>Edit</button></i></a>
+                <a href="{% url 'confirm_delete_post' post.slug %}"><button class="btn btn-danger"><i
+                            class="fa fa-trash"></i>Delete</button></a></p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}

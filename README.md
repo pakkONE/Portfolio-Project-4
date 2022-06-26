@@ -34,9 +34,11 @@
 ### 9. [ Credits](#9-credits)
 
 ## 1. Purpose of the project
+
 I wanted to create a website for something that I love. A sport called Padel. It is one of the fastest growing sports in Sweden and there are opening about 50 to 100 new courts around the country each year. So this website aims to allow users to add padel courts with ratings to either inspire, inform or possibly even warn other users. The community can then search for courts and leave comments wether they agree with the author or not as well as write other helpful information that the author might have missed. Users will then also be able to upvote/downvote the courts.
 
 ## 2. UX
+
 - ### 2.1 User stories
     - Anonymous User
         - As an **Anonymous User** I can **view blog posts as a list** so that **I can select one to read**
@@ -52,7 +54,9 @@ I wanted to create a website for something that I love. A sport called Padel. It
         - As a **Registered User** I can **delete my posts** so that **wrong, old or irrelevant information doesn't stay visible**
         - As a **Registered User** I can **rate the courts by my experience** so that **other users can be inspired or informed**
 - ### 2.2 Typography and color schema
+
 I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I decided on two colors to incorporate on my site based on the color on the grass on the best artificial grass for a padel court, called Mondo as well as the color of the padel ball Head Pro S. The details are here beneath. 
+
 - Typography
     - Logo - Anton, Regular, weight: 400
     - The rest - Roboto Condensed, Regular, weight: 300, 400, 700
@@ -67,6 +71,7 @@ I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I
     - Blue Aritifical Grass color of padel courts called Mondo - #005387
     - Head Pro S Padel ball - #e2f754
 - ### 2.3 Structure of Data
+
 - I used [smartdraw](https://www.smartdraw.com/) for creating the structure of the models. I have included screenshots of it below:
 
 ## 3. Features
@@ -74,10 +79,17 @@ I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I
     - Navigation bar has different links dependant on wether the user is logged in or not
         -  Home, Sign up/Log in if you are logged out
         - Home, Add Post, My Activity, Log out if you are logged in
-- Blog section
+        - Search bar with a function to search posts based on court name. Is not case-sensitive.
+- Home/Blog section
     - This section lists blog posts by the latest created_on date, also displaying likes/dislikes and number of comments
     - It lists them as cards and when you click on the header of the cards it will open that blog post in full width page and where you can commment on the post/like or dislike the court
     - They are paginated by 9 posts per page, three cards per row.
+- Blog post view
+    - Here is a page for each post that display relevant information about the court as well as the content written by the user.
+    - There is also a comment section for registered users to comment on the post.
+    - Registered users can also upvote/downvote posts.
+- Add Post section
+    - Here is a django form with the ability to add a new post for users who are signed in.
 - Footer
     - This section displays copyright information and links to social media accounts.
 - Admin section
@@ -85,6 +97,7 @@ I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I
 
 
 ## 4. Future features
+
 - Navigation Bar
     - I'd like to add more links on the site, like a site to donate, and an About section.
     - I'd also like to add the searchbar in the navigation bar as it is a good modern way to structure you site.
@@ -99,6 +112,7 @@ I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I
 === Post planning ===
 
 ## 6. Technology
+
 - HTML/CSS
 - JavaScript
 - Python/Django
@@ -107,6 +121,7 @@ I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I
 - Cloudinary
 
 ## 7. Testing
+
 - ### 7.1 code validation
 - ### 7.2 test cases (user story based with screenshots)
 - ### 7.3 fixed bugs
@@ -117,11 +132,13 @@ I used [Colormind](http://colormind.io/bootstrap/) to generate a color schema. I
 - ### 7.4 supported screens and browsers
 
 ## 8. Deployment
+
 - ### 8.1 via Heroku
 - ### 8.2 via Github
 - ### 8.3 via Gitpod
 
 ## 9. Credits
+
  - Default image - [Tomasz Krawczyk](https://unsplash.com/photos/M2x3A8Q4JbY?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
  - Color schema thanks to [Colormind](http://colormind.io/bootstrap/)
  - ERDiagram via [smartdraw](https://www.smartdraw.com/)

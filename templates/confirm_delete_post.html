@@ -3,20 +3,20 @@
 {% block content %}
 
 <div class="container">
-    {% if request.user == post.author %}
-    <div class="row">
-      <div class="col-md-8 my-4">
-        <form method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
+  {% if request.user == post.author %}
+  <div class="row">
+    <div class="col-md-8 my-4">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
 
-            <p>Are you sure you want to delete "{{ object }}"?</p>
-          {{ form }}
-          
-            <button type="delete" class="btn btn-primary">Delete</button>
-          </form>
-      </div>
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        {{ form }}
+
+        <button type="delete" class="btn btn-primary">Delete</button>
+      </form>
     </div>
-    {% endif %}
   </div>
+  {% endif %}
+</div>
 
 {% endblock content %}

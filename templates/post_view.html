@@ -1,11 +1,12 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% block content %}
 
 {% if "placeholder" in post.court_image.url %}
 <header class="masthead"
     style="background-image: url('https://images.unsplash.com/photo-1613870930431-a09c7139eb33?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80')">
     {% else %}
-    <img src=" {{ post.court_image.url }}" width="100%">
+    <img src="{{ post.court_image.url }}" width="100%">
     {% endif %}
     <div class="container position-relative px-4 px-lg-5">
         <div class="row g-0">
@@ -45,7 +46,7 @@
                             {{ post.content | safe }}
                         </p>
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col">
                                 {% if user.is_authenticated %}
                                 <form action="{% url 'post_likes' post.slug %}" method="POST" class="d-inline">
                                     {% csrf_token %}
@@ -89,8 +90,6 @@
                                 <span class="text-secondary"><i class="fa-light fa-thumbs-down"></i></span>
                                 {% endif %}
                                 <span class="text-secondary">{{ post.number_of_dislikes }}</span>
-                            </div>
-                            <div class="col-1">
                                 {% with comments.count as total_comments %}
                                 <span class="text-secondary"><i class="far fa-comments"></i>
                                     {{ total_comments }}</span>
@@ -143,22 +142,18 @@
 </article>
 
 <!-- Manage post -->
-<div class="container my-4”>
-    <div class="">
-        <div class="col-6">
-            {% if request.user == post.author %}
-            <h4>Edit/delete your post:</h4>
-            <p><a href="{% url 'edit_post' post.slug %}"><button
-                        class="btn btn-success"><i class="fa fa-edit"></i>Edit Post</button></i></a>
-                <a href="{% url 'confirm_delete_post' post.slug %}"><button class="btn btn-danger"><i
-                            class="fa fa-trash"></i>Delete Post</button></a></p>
-            {% endif %}
-        </div>
+<div class="container col-md-12 my-4”>
+    <div class=" row">
+    <div class="col-6">
+        {% if request.user == post.author %}
+        <h4>Edit/delete your post:</h4>
+        <p><a href="{% url 'edit_post' post.slug %}"><button class="btn btn-success"><i class="fa fa-edit"></i>Edit
+                    Post</button></i></a>
+            <a href="{% url 'confirm_delete_post' post.slug %}"><button class="btn btn-danger"><i
+                        class="fa fa-trash"></i>Delete Post</button></a></p>
+        {% endif %}
     </div>
 </div>
-<div class="container text-center">
-    <br />
-    <a href="{% url 'home' %}" class="back-button btn-default">Home</a>
 </div>
 
 {% endblock content %}

@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Post
+from itertools import chain
+from .models import Post, Comment
 from .forms import CommentForm, AddPostForm
 
 
@@ -39,7 +40,7 @@ class PostView(View):
                 "comment_form": CommentForm()
             },
         )
-    
+
     def post(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -50,7 +51,7 @@ class PostView(View):
         disliked = False
         if post.dislikes.filter(id=self.request.user.id).exists():
             disliked = True
-        
+
         comment_form = CommentForm(data=request.POST)
 
         if comment_form.is_valid():
@@ -85,7 +86,7 @@ class PostLike(View):
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
-        
+
         return HttpResponseRedirect(reverse('post_view', args=[slug]))
 
 
@@ -120,7 +121,7 @@ def add_post(request):
         if form.is_valid():
             form.save()
             return redirect('home')
-            
+
     return render(request, 'add_post.html', context={'form': form})
 
 
@@ -136,3 +137,16 @@ class DeletePost(DeleteView):
     model = Post
     template_name = 'confirm_delete_post.html'
     success_url = reverse_lazy('home')
+
+
+class ActivityView(generic.ListView):
+    model = Post
+    model = Comment
+    template_name = 'my_activity.html'
+
+    def get_queryset(self):
+        post_list = Post.objects.filter(author=self.request.user)
+        comment_list = Comment.objects.filter(author=self.request.user)
+        object_list = list(chain(post_list, comment_list))
+        print(object_list)
+        return object_list
