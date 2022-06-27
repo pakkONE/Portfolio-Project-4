@@ -56,4 +56,4 @@ class Comment(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return f"Comment {self.body} by {self.name} on {self.created_on}"
+        return f"Comment {self.body} by {self.author} on {self.created_on}"

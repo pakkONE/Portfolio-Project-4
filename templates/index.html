@@ -1,6 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Hero -->
+<div class="p-5 text-center rounded-3" style="
+    background-image: url('https://images.unsplash.com/photo-1613870930431-a09c7139eb33?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80');
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  ">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex p-5 justify-content-center align-items-center h-100">
+            <div class="text-white">
+                <h1 class="mb-3">Welcome to PadelCourtR</h1>
+                <h4 class="mb-3">Rate and comment on your favorite padel courts!</h4>
+                <a class="btn btn-outline-success btn-lg" href="{% url 'account_signup' %}" role="button">Get an account
+                    now!</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero -->
 
 <div class="container-fluid">
     <div class="row">
@@ -18,7 +38,7 @@
                                 <img src="{{ post.court_image.url }}" alt="" class="card-img-top">
                                 {% endif %}
                                 <div class="image-flash">
-                                    <p class="author">Post by: {{ post.author }}</p>
+                                    <p class="author text-muted">Post by: {{ post.author }}</p>
                                 </div>
                             </div>
                             <a href="{% url 'post_view' post.slug %}" class="post-link">

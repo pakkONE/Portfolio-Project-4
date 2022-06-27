@@ -4,11 +4,21 @@ body {
   color: black;
 }
 
+.masthead {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.navbar {
+  background-color: #005387;
+}
+
 .navbar-brand {
   font-family: 'Anton', sans-serif;
   font-weight: 400;
   font-size: 1.75em;
-  color: black;
+  color: #e2f754;
 }
 
 .navbar-nav {
@@ -24,8 +34,30 @@ body {
   margin-top: 10rem;
 }
 
+.post-link {
+  text-decoration: none;
+  color: black;
+}
+
+.post-link:hover {
+  text-decoration: none;
+  color: #005387;
+}
+
 .btn-like,
 .btn-dislike {
   border: none;
   background: transparent;
+}
+
+.btn-outline-success {
+  color: #e2f754;
+  border-color: #e2f754;
+}
+
+.btn-outline-success:hover {
+  color: #e2f754;
+  background-color: #005387;
+  border-color: #e2f754;
+  ;
 }

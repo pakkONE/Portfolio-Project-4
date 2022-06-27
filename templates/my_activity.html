@@ -3,20 +3,32 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
 <div class="container-fluid">
     <div class="row">
-        {% if user.is_authenticated %}
-        <div class="col-md-8 offset-md-2">
-            <p>See your activity here:</p>
+        <div class="col-md-8 offset-md-2 text-center my-3">
+            <h2>See your activity here:</h2>
         </div>
-        <br />
-        <div class="col-md-8 offset-md-2 vstack gap-3">
-            {% for post in object_list %}
-            <div class="bg-light border">{{ post.title }}</div>
-            <p><a href="{% url 'edit_post' post.slug %}"><button class="btn btn-success"><i
-                            class="fa fa-edit"></i>Edit</button></i></a>
-                <a href="{% url 'confirm_delete_post' post.slug %}"><button class="btn btn-danger"><i
-                            class="fa fa-trash"></i>Delete</button></a></p>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-8 offset-md-2 m-0 vstack text-center gap-1">
+            {% for object in object_list %}
+            {% if object.title is None %}
+            <div class="bg-light border col-6 offset-3 text-center p-2 rounded-3">
+                Comment: {{ object.body }}
+                <a href="{% url 'delete_comment' object.pk %}"><button class="btn btn-danger btn-sm"><i
+                            class="fa fa-trash"></i>Delete</button></a>
+            </div>
+            {% else %}
+            <div class="bg-light border col-6 offset-3 text-center p-2 rounded-3">
+                Post: {{ object.title }}
+                <a href="{% url 'edit_post' object.slug %}"><button class="btn btn-success btn-sm"><i
+                            class="fa fa-trash"></i>Edit</button></a>
+                <a href="{% url 'confirm_delete_post' object.slug %}"><button class="btn btn-danger btn-sm"><i
+                            class="fa fa-trash"></i>Delete</button></a>
+            </div>
+            {% endif %}
             {% endfor %}
         </div>
         {% endif %}

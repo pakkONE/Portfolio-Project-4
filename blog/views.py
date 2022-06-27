@@ -57,6 +57,7 @@ class PostView(View):
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
+            comment_form.instance.author = request.user
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
@@ -119,7 +120,9 @@ def add_post(request):
     if request.method == 'POST':
         form = AddPostForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_form = form.save(commit=False)
+            new_form.author = request.user
+            new_form.save()
             return redirect('home')
 
     return render(request, 'add_post.html', context={'form': form})
@@ -139,6 +142,12 @@ class DeletePost(DeleteView):
     success_url = reverse_lazy('home')
 
 
+class DeleteComment(DeleteView):
+    model = Comment
+    template_name = 'delete_comment.html'
+    success_url = reverse_lazy('home')
+
+
 class ActivityView(generic.ListView):
     model = Post
     model = Comment
@@ -148,5 +157,4 @@ class ActivityView(generic.ListView):
         post_list = Post.objects.filter(author=self.request.user)
         comment_list = Comment.objects.filter(author=self.request.user)
         object_list = list(chain(post_list, comment_list))
-        print(object_list)
         return object_list
