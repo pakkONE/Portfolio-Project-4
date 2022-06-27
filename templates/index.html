@@ -2,7 +2,7 @@
 
 {% block content %}
 <!-- Hero -->
-<div class="p-5 text-center rounded-3" style="
+<div class="p-5 text-center" style="
     background-image: url('https://images.unsplash.com/photo-1613870930431-a09c7139eb33?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80');
     height: 400px;
     background-repeat: no-repeat;
@@ -14,8 +14,10 @@
             <div class="text-white">
                 <h1 class="mb-3">Welcome to PadelCourtR</h1>
                 <h4 class="mb-3">Rate and comment on your favorite padel courts!</h4>
+                {% if not user.is_authenticated %}
                 <a class="btn btn-outline-success btn-lg" href="{% url 'account_signup' %}" role="button">Get an account
                     now!</a>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -28,14 +30,14 @@
             <div class="row">
                 {% for post in post_list %}
                 <div class="col-md-4">
-                    <div class="card mb-4 h-100">
+                    <div class="card mb-auto h-100">
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in post.court_image.url %}
                                 <img src="https://images.unsplash.com/photo-1613870930431-a09c7139eb33?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"
-                                    alt="" class="card-img-top">
+                                    alt="" class="card-img-top" style="height: 300px; object-fit: cover; object-position: center;">
                                 {% else %}
-                                <img src="{{ post.court_image.url }}" alt="" class="card-img-top">
+                                <img src="{{ post.court_image.url }}" alt="" class="card-img-top" style="height: 300px; object-fit: cover; object-position: center;">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="author text-muted">Post by: {{ post.author }}</p>

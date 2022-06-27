@@ -118,7 +118,7 @@ def add_post(request):
 
     form = AddPostForm()
     if request.method == 'POST':
-        form = AddPostForm(request.POST)
+        form = AddPostForm(request.POST, request.FILES)
         if form.is_valid():
             new_form = form.save(commit=False)
             new_form.author = request.user
