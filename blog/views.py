@@ -1,15 +1,18 @@
+from itertools import chain
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
-from itertools import chain
 from .models import Post, Comment
 from .forms import CommentForm, AddPostForm
 
 
 class BlogPosts(generic.ListView):
+    """
+    View for displaying all the blog posts as a list
+    """
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
@@ -17,7 +20,10 @@ class BlogPosts(generic.ListView):
 
 
 class PostView(View):
-
+    """
+    View for displaying a selected post with all of its
+    contents comments and likes/dislikes
+    """
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -79,7 +85,10 @@ class PostView(View):
 
 
 class PostLike(View):
-
+    """
+    View for handling the likes/unlikes of a post
+    making sure that the user can only like a post once
+    """
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
 
@@ -92,7 +101,10 @@ class PostLike(View):
 
 
 class PostDislike(View):
-
+    """
+    View for handling the dislikes/undislikes of a post
+    making sure that the user can only dislike a post once
+    """
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
 
@@ -105,6 +117,9 @@ class PostDislike(View):
 
 
 class SearchResults(generic.ListView):
+    """
+    View for handling the search field and its results
+    """
     model = Post
     template_name = 'search_results.html'
 
@@ -115,7 +130,9 @@ class SearchResults(generic.ListView):
 
 
 def add_post(request):
-
+    """
+    View for adding a new post by filling out the AddPostForm
+    """
     form = AddPostForm()
     if request.method == 'POST':
         form = AddPostForm(request.POST, request.FILES)
@@ -129,6 +146,9 @@ def add_post(request):
 
 
 class UpdatePost(UpdateView):
+    """
+    A view for allowing user to update a post that it is an author of
+    """
     model = Post
     form_class = AddPostForm
     template_name_suffix = '_update_form'
@@ -137,18 +157,27 @@ class UpdatePost(UpdateView):
 
 
 class DeletePost(DeleteView):
+    """
+    A view for allowing user to delete a post that it is an author of
+    """
     model = Post
     template_name = 'confirm_delete_post.html'
     success_url = reverse_lazy('home')
 
 
 class DeleteComment(DeleteView):
+    """
+    A view for allowing user to delete a comment that it is an author of
+    """
     model = Comment
     template_name = 'delete_comment.html'
     success_url = reverse_lazy('home')
 
 
 class ActivityView(generic.ListView):
+    """
+    A view to display all posts and comments made by the user
+    """
     model = Post
     model = Comment
     template_name = 'my_activity.html'

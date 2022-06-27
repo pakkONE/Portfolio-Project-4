@@ -3,7 +3,7 @@
 {% block content %}
 <!-- Hero -->
 <div class="p-5 text-center" style="
-    background-image: url('https://images.unsplash.com/photo-1613870930431-a09c7139eb33?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80');
+    background-image: url('https://res.cloudinary.com/dv6cgny0t/image/upload/v1656354800/static/default_image_tvvwpp.jpg');
     height: 400px;
     background-repeat: no-repeat;
     background-position: center;
@@ -34,7 +34,7 @@
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in post.court_image.url %}
-                                <img src="https://images.unsplash.com/photo-1613870930431-a09c7139eb33?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"
+                                <img src="https://res.cloudinary.com/dv6cgny0t/image/upload/v1656354800/static/default_image_tvvwpp.jpg"
                                     alt="" class="card-img-top" style="height: 300px; object-fit: cover; object-position: center;">
                                 {% else %}
                                 <img src="{{ post.court_image.url }}" alt="" class="card-img-top" style="height: 300px; object-fit: cover; object-position: center;">

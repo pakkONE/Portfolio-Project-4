@@ -1,12 +1,22 @@
 from django.contrib import admin
-from .models import Post, Comment
 from django_summernote.admin import SummernoteModelAdmin
+from .models import Post, Comment
 
 
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
-    
-    list_display = ('title', 'slug', 'status', 'created_on', 'updated_on', 'court')
+    """
+    An admin view for handling all tasks in regards to the Post model
+    containing a wysiwyg editor module called Summernote
+    """
+    list_display = (
+        'title',
+        'slug',
+        'status',
+        'created_on',
+        'updated_on',
+        'court'
+        )
     search_fields = ['title', 'content', 'court']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on', 'updated_on')
@@ -20,7 +30,9 @@ class PostAdmin(SummernoteModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-
+    """
+    An admin view for handling all tasks in regards to the Comments model
+    """
     list_display = ('name', 'body', 'post', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
     search_fields = ('name', 'email', 'body')
@@ -29,4 +41,3 @@ class CommentAdmin(admin.ModelAdmin):
     @admin.action(description='Approve the selected comments')
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
-
