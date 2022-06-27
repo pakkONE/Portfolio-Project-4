@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-md-8 my-5">
                     <div class="row g-0">
-                        <div class="col-md-6">
+                        <div class="card col-md-6">
                             <p class="card-text">
                                 {{ post.content | safe }}
                             </p>
@@ -53,12 +53,12 @@
                                         {% if liked %}
 
                                         <button type="submit" name="bloglike_id" value="{{ post.slug }}"
-                                            class="btn-like"><i class="fa-solid fa-thumbs-up"></i></button>
+                                            class="btn-like"><i class="fa-solid fa-thumbs-up"></i>{{ post.number_of_likes }}</button>
 
                                         {% else %}
 
                                         <button type="submit" name="bloglike_id" value="{{ post.slug }}"
-                                            class="btn-like"><i class="fa-regular fa-thumbs-up"></i></button>
+                                            class="btn-like"><i class="fa-regular fa-thumbs-up"></i>{{ post.number_of_likes }}</button>
 
                                         {% endif %}
 
@@ -73,19 +73,19 @@
                                         {% if disliked %}
 
                                         <button type="submit" name="blogdislike_id" value="{{ post.slug }}"
-                                            class="btn-dislike"><i class="fa-solid fa-thumbs-down"></i></button>
+                                            class="btn-dislike"><i class="fa-solid fa-thumbs-down"></i>{{ post.number_of_dislikes }}</button>
 
                                         {% else %}
 
                                         <button type="submit" name="blogdislike_id" value="{{ post.slug }}"
-                                            class="btn-dislike"><i class="fa-regular fa-thumbs-down"></i></button>
+                                            class="btn-dislike"><i class="fa-regular fa-thumbs-down"></i>{{ post.number_of_dislikes }}</button>
 
                                         {% endif %}
 
                                     </form>
                                     {% else %}
                                     <span class="text-secondary"><i class="fa-light fa-thumbs-down"></i></span>
-                                    <span class="text-secondary"><i class="fa-light fa-thumbs-up"></i>{{ post.number_of_dislikes }}</span>
+                                    <span class="text-secondary">{{ post.number_of_dislikes }}</span>
                                     {% endif %}
                                     {% with comments.count as total_comments %}
                                     <span class="text-secondary"><i class="far fa-comments"></i>
