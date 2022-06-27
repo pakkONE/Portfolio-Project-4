@@ -27,3 +27,9 @@ window.addEventListener('DOMContentLoaded', () => {
         scrollPos = currentTop;
     });
 })
+
+const handleSubmit = document.getElementById('submitDelete');
+
+handleSubmit.addEventListener('click', function(event){
+    event.preventDefault();
+});

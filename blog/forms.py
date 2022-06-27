@@ -14,7 +14,6 @@ class AddPostForm(forms.ModelForm):
         fields = [
             'title',
             'slug',
-            'author',
             'court',
             'location',
             'website',
