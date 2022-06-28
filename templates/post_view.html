@@ -160,17 +160,17 @@
 
     <!-- Manage post -->
     <div class="container col-md-12 my-4”>
-    <div class=" row">
-        <div class="col-6">
-            {% if request.user == post.author %}
-            <h4>Edit/delete your post:</h4>
-            <p><a href="{% url 'edit_post' post.slug %}"><button class="btn btn-success"><i class="fa fa-edit"></i>Edit
+        <div class="row">
+            <div class="col-6">
+                {% if request.user == post.author %}
+                <h4>Edit/delete your post:</h4>
+                <p><a href="{% url 'edit_post' post.slug %}"><button class="btn btn-success"><i class="fa fa-edit"></i>Edit
                         Post</button></i></a>
-                <a href="{% url 'confirm_delete_post' post.slug %}"><button class="btn btn-danger"><i
+                    <a href="{% url 'confirm_delete_post' post.slug %}"><button class="btn btn-danger"><i
                             class="fa fa-trash"></i>Delete Post</button></a></p>
-            {% endif %}
+                {% endif %}
+            </div>
         </div>
-    </div>
     </div>
 
     {% endblock content %}
